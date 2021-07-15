@@ -108,8 +108,6 @@ def run_simulation(txt_filename, txt_prefect_digit, num_of_digits, number_of_run
                    mix_up_percent):
     digits_line_by_line = get_digits_from_txt(txt_filename, num_of_digits)
 
-    # digits_line_by_line = change_0_to_1(digits_line_by_line)
-
     perfect_digit = get_digits_from_txt(txt_prefect_digit, 1)[0]
 
     weight_matrix = get_weight_matrix(digits_line_by_line)
@@ -139,7 +137,6 @@ def run_simulation(txt_filename, txt_prefect_digit, num_of_digits, number_of_run
             plt.show()
         total_matches = np.sum(digit_updated == digit_model)
         percent = (total_matches / len(digit_model)) * 100
-        # print("round num %d, percent of success = %d%%" % (_ + 1, percent))
         if percent >= percent_to_pass_for_success:
             number_of_success += 1
 
@@ -225,7 +222,6 @@ def get_plot_from_user_input():
 
 def main():
     txt_filename = '1_perfect_digit_of_each.txt'
-    # txt_prefect_digit = 'zero_perfect.txt'
     txt_prefect_digit = get_digit_to_find_from_user_input()
     # hyper parameters
     num_of_different_digits = get_num_of_dig_from_user_input()
@@ -242,36 +238,6 @@ def main():
 
     print('press somethong to exit')
     input()
-    # x = []
-    # y = []
-    # z = []
-    # ar = [5, 10, 20, 50]
-    # for mix_up_percent in ar:
-    #     print('--------mix up percent =  %d--------' % mix_up_percent)
-    #     for num in range(1, num_of_different_digits + 1):
-    #         success_rate = run_simulation(txt_filename, txt_prefect_digit, num * 10, number_of_runs,
-    #                                       percent_to_pass_for_success, plot_digits,
-    #                                       mix_up_percent)
-    #         z.append(success_rate)
-    #         x.append(num)
-    #         y.append(mix_up_percent)
-    #         print('for %d letters, success rate: %d%%' % (num, success_rate))
-    # for num in range(1, num_of_different_digits):
-    #     success_rate = run_simulation(txt_filename, txt_prefect_digit, num * 10, number_of_runs,
-    #                                   percent_to_pass_for_success, plot_digits,
-    #                                   mix_up_percent)
-    #     x.append(success_rate)
-    #     y.append(num)
-    #     print('for %d letters, success rate: %d%%' % (num, success_rate))
-    # #
-    # # plot_3d_for_report(x, y, z)
-    # fig = plt.figure()
-    # plt.plot(y, x)
-    # fig.suptitle('Check for learning 0', fontsize=16)
-    # plt.xlabel('success rate', fontsize=10)
-    # plt.ylabel('number of letters', fontsize=10)
-    # plt.show()
-
 
 if __name__ == '__main__':
     main()
